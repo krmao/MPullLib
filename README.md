@@ -11,9 +11,9 @@ thanks for @wcy10586
 
 ###  real preview in android studio
 
-![png](https://github.com/mkrcpp/MPullLib/blob/master/code-0.png  =720x480)
-![png](https://github.com/mkrcpp/MPullLib/blob/master/code-1.png  =720x480)
-![png](https://github.com/mkrcpp/MPullLib/blob/master/code-2.png  =720x480)
+![Alt text](code-0.png)
+![Alt text](code-1.png)
+![Alt text](code-2.png)
 
 ### xml
 ```
