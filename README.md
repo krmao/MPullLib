@@ -22,7 +22,13 @@ thanks for [@wcy10586](https://github.com/wcy10586)
 ![code-1](code-1.png)
 ![code-2](code-2.png)
 
-### NO.3 use in xml
+### NO.3 add to dependencies
+
+```
+compile 'com.mlibrary:mpulllib:0.1'
+```
+
+### NO.4 use in xml
 ```
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -87,7 +93,7 @@ thanks for [@wcy10586](https://github.com/wcy10586)
 </LinearLayout>
 
 ```
-### NO.4 use in java
+### NO.5 use in java
 
 ```
     @Override
