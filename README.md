@@ -1,21 +1,28 @@
 # MPullLib
-### apply to all android views
-```
-based on https://github.com/wcy10586/OverscrollLayout
-thanks for @wcy10586
-```
 
-### preview gif
+this library is based on [https://github.com/wcy10586/OverscrollLayout](https://github.com/wcy10586/OverscrollLayout)
+
+thanks for [@wcy10586](https://github.com/wcy10586)
+
+### NO.0 fectures
+
+1. In theory is applicable to all android views.(I only used in RecyclerView, others had not tried.)
+2. Good compatibility for [Drag and Swipe with RecyclerView](https://medium.com/@ipaulpro/drag-and-swipe-with-recyclerview-b9456d2b1aaf#.59itwdxpk).
+3. Support multi-fingers to pull to refresh
+4. Can only use **com.mlibrary.widget.pull.MPullLayout** to realize overscroll.
+5. And add **com.mlibrary.widget.pull.MPullToRefreshLayout**(child must be **MPullLayout**) to realize pull to refresh.
+
+### NO.1 preview the result gif
 
 ![gif](pull-refresh.gif "Logo Title Text 1")
 
-###  real preview in android studio
+### NO.2 preview in android studio while edit the layout xml
 
-![Alt text](code-0.png)
-![Alt text](code-1.png)
-![Alt text](code-2.png)
+![code-0](code-0.png)
+![code-1](code-1.png)
+![code-2](code-2.png)
 
-### xml
+### NO.3 use in xml
 ```
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -80,36 +87,9 @@ thanks for @wcy10586
 </LinearLayout>
 
 ```
-### java
+### NO.4 use in java
 
 ```
-public class HomeActivity extends MBaseFragmentActivity {
-    private String TAG = "HomeActivity";
-    private MPullToRefreshLayout mPullLayout;
-    private MPullLayout childPullLayout;
-    private long mExitTime = 0;
-    private MRecyclerViewAdapter<ItemEntity, MViewHolder> mRecyclerViewAdapter;
-    private ImageView imageViewTop;
-    private ImageView imageViewBottom;
-
-
-    public static class ItemEntity {
-        public String content;
-        public String imageUrl;
-        public int oldIndex;
-
-        public ItemEntity(String content, String imageUrl, int oldIndex) {
-            this.content = content;
-            this.imageUrl = imageUrl;
-            this.oldIndex = oldIndex;
-        }
-    }
-
-    private int topImageViewHeight = 0;
-    private int bottomImageViewHeight = 0;
-    private int COLOR_DEFAULT = Color.parseColor("#2AA5F8");
-    private int COLOR_SELECTED = Color.parseColor("#AAA5F8");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -246,20 +226,6 @@ public class HomeActivity extends MBaseFragmentActivity {
                     }
                 }, 3000);
     }
-
-    public static class MViewHolder extends RecyclerView.ViewHolder {
-        public SimpleDraweeView simpleDraweeView;
-        public TextView text;
-        public CardView cardView;
-
-        public MViewHolder(View view) {
-            super(view);
-            simpleDraweeView = (SimpleDraweeView) view.findViewById(R.id.simpleDraweeView);
-            text = (TextView) view.findViewById(R.id.text);
-            cardView = (CardView) view.findViewById(R.id.cardView);
-        }
-    }
-}
 
 ```
 
