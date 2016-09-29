@@ -25,7 +25,7 @@ thanks for [@wcy10586](https://github.com/wcy10586)
 ### NO.3 add to dependencies
 
 ```
-compile 'com.mlibrary:mpulllib:0.1'
+	compile 'com.mlibrary:mpulllib:0.1'
 ```
 
 ### NO.4 use in xml
@@ -95,25 +95,25 @@ compile 'com.mlibrary:mpulllib:0.1'
 ```
 ### NO.5 use in java
 
-1. set global duration
+###### 1. set global duration
 
 
 ```
-MPullToRefreshLayout.setGlobalDurationFooterToLoading(3000);
-MPullToRefreshLayout.setGlobalDurationFooterToNormal(3000);        MPullToRefreshLayout.setGlobalDurationHeaderToNormal(2000);
-MPullToRefreshLayout.setGlobalDurationHeaderToRefreshing(2000);
+	MPullToRefreshLayout.setGlobalDurationFooterToLoading(3000);
+	MPullToRefreshLayout.setGlobalDurationFooterToNormal(3000);        	MPullToRefreshLayout.setGlobalDurationHeaderToNormal(2000);
+	MPullToRefreshLayout.setGlobalDurationHeaderToRefreshing(2000);
 ```
 
-2. set debugable to see console
+###### 2. set debugable to see console
 
 ```
-mPullLayout.setDebugAble(true);//debug
+	mPullLayout.setDebugAble(true);//debug
 ```
 
-3. setOnPullRefreshListener
+###### 3. setOnPullRefreshListener
 
 ```
-mPullLayout.setOnPullRefreshListener(new OnPullRefreshListener() {
+	mPullLayout.setOnPullRefreshListener(new OnPullRefreshListener() {
             @Override
             public void onRefresh() {
                 currentPage = 0;
@@ -127,10 +127,10 @@ mPullLayout.setOnPullRefreshListener(new OnPullRefreshListener() {
         });
 ```
 
-4. setOnOverScrollListener
+###### 4. setOnOverScrollListener
 
 ```
-mPullLayout.setOnOverScrollListener(new OnOverScrollListener() {
+	mPullLayout.setOnOverScrollListener(new OnOverScrollListener() {
             @Override
             public void onOverScroll(int currentX, int currentY, boolean isInDrag) {
                 Log.d(TAG, "currentY:" + currentY);
@@ -156,10 +156,10 @@ mPullLayout.setOnOverScrollListener(new OnOverScrollListener() {
         });
 ```
 
-5. example for async request
+###### 5. example for async request
 
 ```
-private int currentPage = 0;
+	private int currentPage = 0;
     private static int totalPage = 8;
 
     public void doAsyncRequest(final boolean isRefreshNotLoading) {
