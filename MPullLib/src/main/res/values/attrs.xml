@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MPullToRefreshLayout">
+        <attr name="pullHeaderBackground" format="reference|color" />
+        <attr name="pullHeaderTextColor" format="reference|color" />
+        <attr name="pullFooterBackground" format="reference|color" />
+        <attr name="pullFooterTextColor" format="reference|color" />
+        <attr name="pullBackground" format="reference|color" />
+        <attr name="pullTextColor" format="reference|color" />
+        <attr name="pullEnableTouchWhileRefreshingOrLoading" format="reference|boolean" />
+        <attr name="pullMode" format="enum">
+            <enum name="both" value="0" />
+            <enum name="header" value="1" />
+            <enum name="footer" value="2" />
+            <enum name="none" value="3" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="MPullLayout">
+        <attr name="durationOverScrollingToNormal" format="reference|integer" />
+        <attr name="overScrollMode" format="enum">
+            <enum name="both" value="0" />
+            <enum name="header" value="1" />
+            <enum name="footer" value="2" />
+            <enum name="none" value="3" />
+        </attr>
+        <attr name="orientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>

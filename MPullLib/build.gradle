@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+apply from: "$rootDir/gradle/global_config.gradle"
+apply plugin: 'com.novoda.bintray-release'
+
+project.version = "0.1"
+
+//https://github.com/novoda/bintray-release/wiki
+//gradle  bintrayUpload
+publish {
+    bintrayUser = project.bintrayUser
+    bintrayKey = project.bintrayKey
+    dryRun = false
+    autoPublish = true //上传成功后自动发布
+    repoName = "maven"
+
+    groupId = "com.mlibrary"//compile 'com.mlibrary:mpulllib:0.1'
+    artifactId = "mpulllib" //compile 'com.mlibrary:mpulllib:0.1'
+    publishVersion = "0.1"  //compile 'com.mlibrary:mpulllib:0.1'
+
+    userOrg = "krmao"           //krmao/maven/MPullLib
+    uploadName = "MPullLib"     //krmao/maven/MPullLib
+
+    desc = "pull to refresh lib for android"
+    website = "https://github.com/krmao/MPullLib"
+    //publications = ["maven"]
+    licences = ["Apache-2.0"]
+}
+
+android {
+    defaultConfig {
+        minSdkVersion 11 //setTranslationY >=11
+        targetSdkVersion 24
+    }
+}
+
+/*
+
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+    }
+}
+*/
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:recyclerview-v7:24.2.1'
+}

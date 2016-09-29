@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText,UselessParent,SpUsage,RtlHardcoded">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <LinearLayout
+                android:id="@+id/mTextLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/mText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="下拉刷新"
+                    android:textColor="@color/whitesmoke"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/mTextTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="最近更新: 13:56"
+                    android:textColor="@color/whitesmoke"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/mTextRefreshSuccess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@drawable/mlibrary_pullrefresh_failed"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="刷新成功"
+                android:textColor="@color/whitesmoke"
+                android:textSize="14dp"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/mImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:layout_toLeftOf="@+id/mTextLayout"
+                android:src="@drawable/mlibrary_pulldown_arrow" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
