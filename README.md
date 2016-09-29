@@ -95,72 +95,42 @@ compile 'com.mlibrary:mpulllib:0.1'
 ```
 ### NO.5 use in java
 
+1. set global duration
+
+
 ```
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+MPullToRefreshLayout.setGlobalDurationFooterToLoading(3000);
+MPullToRefreshLayout.setGlobalDurationFooterToNormal(3000);        MPullToRefreshLayout.setGlobalDurationHeaderToNormal(2000);
+MPullToRefreshLayout.setGlobalDurationHeaderToRefreshing(2000);
+```
 
-        MPullToRefreshLayout.setGlobalDurationFooterToLoading(3000);
-        MPullToRefreshLayout.setGlobalDurationFooterToNormal(3000);
-        MPullToRefreshLayout.setGlobalDurationHeaderToNormal(2000);
-        MPullToRefreshLayout.setGlobalDurationHeaderToRefreshing(2000);
+2. set debugable to see console
 
-        mPullLayout = (MPullToRefreshLayout) findViewById(R.id.mPullToRefreshLayout);
-        childPullLayout = (MPullLayout) findViewById(R.id.childPullLayout);
-        imageViewTop = (ImageView) findViewById(R.id.imageViewTop);
-        imageViewBottom = (ImageView) findViewById(R.id.imageViewBottom);
+```
+mPullLayout.setDebugAble(true);//debug
+```
 
-        List<ItemEntity> initDataList = new ArrayList<>();
-        for (int i = 0; i < 20; i++)
-            initDataList.add(new ItemEntity(null, MTestUtil.getRandomTransparentAvatar(), i));
+3. setOnPullRefreshListener
 
-        mRecyclerViewAdapter = new MRecyclerViewAdapter<ItemEntity, MViewHolder>(this, initDataList) {
+```
+mPullLayout.setOnPullRefreshListener(new OnPullRefreshListener() {
             @Override
-            public MViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                return new MViewHolder(LayoutInflater.from(context).inflate(R.layout.image_layout, parent, false));
+            public void onRefresh() {
+                currentPage = 0;
+                doAsyncRequest(true);
             }
 
             @Override
-            public void onBindViewHolder(final MViewHolder holder, int position) {
-                ItemEntity itemEntity = mRecyclerViewAdapter.getDataList().get(position);
-                MFrescoUtil.showProgressiveImage(itemEntity.imageUrl, holder.simpleDraweeView);
-                holder.text.setText(String.format(Locale.getDefault(), "oldIndex:%d currentPosition:%d", itemEntity.oldIndex, position));
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        MToastUtil.show(holder.text.getText().toString().trim());
-                    }
-                });
+            public void onLoadMore() {
+                doAsyncRequest(false);
             }
-        };
+        });
+```
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(mRecyclerViewAdapter);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        final int model = childPullLayout.getOverScrollMode();
-        //增加滑动处理,需 viewHolder 继承 ItemTouchHelperViewHolder
-        ItemTouchHelper mItemTouchHelper = new ItemTouchHelper(new SimpleItemTouchHelperCallback(mRecyclerViewAdapter, new OnDragListener() {
-            @Override
-            public void onDragBegin(RecyclerView.ViewHolder viewHolder, int actionState) {
-                childPullLayout.setOverScrollMode(MPullLayout.MODE_NONE);
-                MViewHolder mViewHolder = (MViewHolder) viewHolder;
-                mViewHolder.cardView.setCardBackgroundColor(COLOR_SELECTED);
-            }
+4. setOnOverScrollListener
 
-            @Override
-            public void onDragEnd(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-                childPullLayout.setOverScrollMode(model);
-                MViewHolder mViewHolder = (MViewHolder) viewHolder;
-                mViewHolder.cardView.setCardBackgroundColor(COLOR_DEFAULT);
-            }
-        }));
-        mItemTouchHelper.attachToRecyclerView(recyclerView);
-
-        mPullLayout.setDebugAble(true);//debug
-        mPullLayout.setOnOverScrollListener(new OnOverScrollListener() {
+```
+mPullLayout.setOnOverScrollListener(new OnOverScrollListener() {
             @Override
             public void onOverScroll(int currentX, int currentY, boolean isInDrag) {
                 Log.d(TAG, "currentY:" + currentY);
@@ -184,21 +154,12 @@ compile 'com.mlibrary:mpulllib:0.1'
                 }
             }
         });
-        mPullLayout.setOnPullRefreshListener(new OnPullRefreshListener() {
-            @Override
-            public void onRefresh() {
-                currentPage = 0;
-                doAsyncRequest(true);
-            }
+```
 
-            @Override
-            public void onLoadMore() {
-                doAsyncRequest(false);
-            }
-        });
-    }
+5. example for async request
 
-    private int currentPage = 0;
+```
+private int currentPage = 0;
     private static int totalPage = 8;
 
     public void doAsyncRequest(final boolean isRefreshNotLoading) {
@@ -232,6 +193,4 @@ compile 'com.mlibrary:mpulllib:0.1'
                     }
                 }, 3000);
     }
-
 ```
-
