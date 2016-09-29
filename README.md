@@ -4,7 +4,7 @@ this library is based on [https://github.com/wcy10586/OverscrollLayout](https://
 
 thanks for [@wcy10586](https://github.com/wcy10586)
 
-### NO.0 fectures
+### fectures
 
 1. In theory is applicable to all android views.(I only used in RecyclerView, others had not tried.)
 2. Good compatibility for [Drag and Swipe with RecyclerView](https://medium.com/@ipaulpro/drag-and-swipe-with-recyclerview-b9456d2b1aaf#.59itwdxpk).
@@ -12,23 +12,23 @@ thanks for [@wcy10586](https://github.com/wcy10586)
 4. Can only use **com.mlibrary.widget.pull.MPullLayout** to realize overscroll.
 5. And add **com.mlibrary.widget.pull.MPullToRefreshLayout**(child must be **MPullLayout**) to realize pull to refresh.
 
-### NO.1 preview the result gif
+### preview the result gif
 
 ![gif](pull-refresh.gif "Logo Title Text 1")
 
-### NO.2 preview in android studio while edit the layout xml
+### preview in android studio while edit the layout xml
 
 ![code-0](code-0.png)
 ![code-1](code-1.png)
 ![code-2](code-2.png)
 
-### NO.3 add to dependencies
+### add to dependencies
 
 ```
 	compile 'com.mlibrary:mpulllib:0.1'
 ```
 
-### NO.4 use in xml
+### use in xml
 ```
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -93,16 +93,27 @@ thanks for [@wcy10586](https://github.com/wcy10586)
 </LinearLayout>
 
 ```
-### NO.5 use in java
+### use in java
 
 ###### 1. set global duration
 
 
 ```
 	MPullToRefreshLayout.setGlobalDurationFooterToLoading(3000);
-	MPullToRefreshLayout.setGlobalDurationFooterToNormal(3000);        	MPullToRefreshLayout.setGlobalDurationHeaderToNormal(2000);
+	MPullToRefreshLayout.setGlobalDurationFooterToNormal(3000);          
+	MPullToRefreshLayout.setGlobalDurationHeaderToNormal(2000);
 	MPullToRefreshLayout.setGlobalDurationHeaderToRefreshing(2000);
 ```
+
+###### 1.1 override global duartion
+
+```
+    mPullLayout.setDurationFooterToLoading(2000);
+    mPullLayout.setDurationFooterToNormal(2000);
+    mPullLayout.setDurationHeaderToNormal(2000);
+    mPullLayout.setDurationHeaderToRefreshing(2000);
+```
+
 
 ###### 2. set debugable to see console
 
@@ -110,7 +121,7 @@ thanks for [@wcy10586](https://github.com/wcy10586)
 	mPullLayout.setDebugAble(true);//debug
 ```
 
-###### 3. setOnPullRefreshListener
+###### 3. example for *setOnPullRefreshListener*
 
 ```
 	mPullLayout.setOnPullRefreshListener(new OnPullRefreshListener() {
@@ -127,7 +138,7 @@ thanks for [@wcy10586](https://github.com/wcy10586)
         });
 ```
 
-###### 4. setOnOverScrollListener
+###### 4. example for *setOnOverScrollListener*
 
 ```
 	mPullLayout.setOnOverScrollListener(new OnOverScrollListener() {
@@ -156,7 +167,7 @@ thanks for [@wcy10586](https://github.com/wcy10586)
         });
 ```
 
-###### 5. example for async request
+###### 5. example for *async request*
 
 ```
 	private int currentPage = 0;
