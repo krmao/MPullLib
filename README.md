@@ -1,8 +1,8 @@
 # MPullLib
 
-this library is based on [https://github.com/wcy10586/OverscrollLayout](https://github.com/wcy10586/OverscrollLayout)
+* this library is based on [https://github.com/wcy10586/OverscrollLayout](https://github.com/wcy10586/OverscrollLayout)
 
-thanks for [@wcy10586](https://github.com/wcy10586)
+* thanks for [@wcy10586](https://github.com/wcy10586)
 
 ### fectures
 
@@ -14,13 +14,7 @@ thanks for [@wcy10586](https://github.com/wcy10586)
 
 ### preview the result gif
 
-![gif](pull-refresh.gif "Logo Title Text 1")
-
-### preview in android studio while edit the layout xml
-
-![code-0](code-0.png)
-![code-1](code-1.png)
-![code-2](code-2.png)
+![gif](pull-refresh.gif "pull-refresh")
 
 ### add to dependencies
 
@@ -29,57 +23,22 @@ thanks for [@wcy10586](https://github.com/wcy10586)
 ```
 
 ### use in xml
+
 ```
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#eeeeee"
-    android:orientation="vertical">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#83B7D5"
-        tools:ignore="NestedWeights">
-
-        <ImageView
-            android:id="@+id/imageViewTop"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_gravity="top"
-            android:contentDescription="@null"
-            android:scaleType="centerCrop"
-            android:src="@drawable/chuyin"
-            tools:ignore="HardcodedText" />
-
-        <ImageView
-            android:id="@+id/imageViewBottom"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_gravity="bottom"
-            android:contentDescription="@null"
-            android:scaleType="centerCrop"
-            android:src="@drawable/chuyin2"
-            tools:ignore="HardcodedText" />
 
         <com.mlibrary.widget.pull.MPullToRefreshLayout
             android:id="@+id/mPullToRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:pullBackground="@color/orange"
+            app:pullEnableTouchWhileRefreshingOrLoading="true"
             app:pullHeaderBackground="@color/red"
             app:pullHeaderTextColor="@color/blue"
-            app:pullEnableTouchWhileRefreshingOrLoading="true"
             app:pullTextColor="#333">
-
             <com.mlibrary.widget.pull.MPullLayout
                 android:id="@+id/childPullLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
@@ -87,12 +46,10 @@ thanks for [@wcy10586](https://github.com/wcy10586)
                     android:background="@color/white" />
             </com.mlibrary.widget.pull.MPullLayout>
         </com.mlibrary.widget.pull.MPullToRefreshLayout>
-
-    </FrameLayout>
-
-</LinearLayout>
+        
 
 ```
+
 ### use in java
 
 ###### 1. set global duration
